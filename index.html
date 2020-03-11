@@ -14,6 +14,8 @@
             <p> x：{{x}} </x:>, y：{{y}} </p>
             <p> x+y={{sum(x,y)}} </p>
             <p> x*y={{mult(x,y)}} </p>
+            <p> 衬衫单价：{{shirtCost}} 元，数量：{{shirtNum}}, 金额：{{shirtPay}} 元 </p>
+            <p> 帽子单价：{{hatCost}} 元，数量：{{hatNum}}，金额：{{hatPay}} 元 </p>
         </div>
 
         <script src="https://unpkg.com/vue"></script>
@@ -27,10 +29,20 @@
                     details: ['硬盘','软盘','U盘'],
                     x:50,
                     y:60,
+                    shirtCost:30,
+                    shirtNum:40,
+                    hatCost:50,
+                    hatNum:30,
                 },
                 computed:{
                     total(){
                         return 1800+24+34;
+                    },
+                    shirtPay(){
+                        return this.shirtCost * this.shirtNum;
+                    },
+                    hatPay(){
+                        return this.hatCost * this.hatNum;
                     }
                 },
                 methods:{
@@ -44,6 +56,5 @@
             });            
 
         </script> 
-
     </body>
 </html>
