@@ -5,8 +5,11 @@
         <title>Vue.js App</title>
     </head>
     <body>
+        <h2>这是个使用了Vue的测试页面</h2>
         <div id="app">
-            {{message}}
+            <p>消息：{{message}}</p>
+            <p>价格：{{price}}</p>
+            <p>明细表：{{details}}</p>
         </div>
 
         <script src="https://unpkg.com/vue"></script>
@@ -15,7 +18,9 @@
             const app = new Vue({
                 el: '#app',
                 data:{
-                    message:'Hello!哈喽！'
+                    message:'Hello!哈喽！',
+                    price:18+34,
+                    details:['硬盘','软盘','U盘']
                 }
             });            
 
