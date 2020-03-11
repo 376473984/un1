@@ -10,6 +10,7 @@
             <p>消息：{{message}}</p>
             <p>价格：{{price}}</p>
             <p>明细表：{{details}}</p>
+            <p>合计：{{total}}</p>
         </div>
 
         <script src="https://unpkg.com/vue"></script>
@@ -20,7 +21,12 @@
                 data:{
                     message:'Hello!哈喽！',
                     price:18+34,
-                    details:['硬盘','软盘','U盘']
+                    details: ['硬盘','软盘','U盘'],
+                },
+                computed:{
+                    total(){
+                        return 18+34
+                    }
                 }
             });            
 
