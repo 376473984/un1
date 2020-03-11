@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charaset="utf-8">
-        <title>Vue.js App</title>
-    </head>
-    <body>
-        <h2>这是个使用了Vue的测试页面</h2>
-        <div id="app">
-            <p>消息：{{message}}</p>
-            <p>价格：{{price}}</p>
-            <p>明细表：{{details}}</p>
-            <p>合计：{{total}}</p>
-            <p> x：{{x}} </x:>, y：{{y}} </p>
-            <p> x+y={{sum(x,y)}} </p>
-            <p> x*y={{mult(x,y)}} </p>
-            <p> 衬衫单价：{{shirtCost}} 元，数量：{{shirtNum}}, 金额：{{shirtPay}} 元 </p>
-            <p> 帽子单价：{{hatCost}} 元，数量：{{hatNum}}，金额：{{hatPay}} 元 </p>
-        </div>
 
-        <script src="https://unpkg.com/vue"></script>
+<head>
+  <meta charaset="utf-8">
+  <title>Vue.js App</title>
+</head>
 
-        <script type="text/javascript">
-            const app = new Vue({
-                el: '#app',
-                data:{
-                    message:'Hello!哈喽！',
-                    price:'1800, 24, 34',
-                    details: ['硬盘','软盘','U盘'],
-                    x:50,
-                    y:60,
-                    shirtCost:30,
-                    shirtNum:40,
-                    hatCost:50,
-                    hatNum:30,
-                },
-                computed:{
-                    total(){
-                        return 1800+24+34;
-                    },
-                    shirtPay(){
-                        //注意这里直接额你不引用数据需要this
-                        return this.shirtCost * this.shirtNum; 
-                    },
-                    hatPay(){
-                        return this.hatCost * this.hatNum;
-                    }
-                },
-                methods:{
-                    sum(x,y){
-                        //注意传参数据，非内部应用数据，则不需要 this
-                        return x+y; 
-                    },
-                    mult(x,y){
-                        return x*y;
-                    }
-                }
-            });            
+<body>
+  <h2>这是个使用了Vue的测试页面</h2>
+  <div id="app">
+    <p>消息：{{message}}</p>
+    <p>价格：{{price}}</p>
+    <p>明细表：{{details}}</p>
+    <p>合计：{{total}}</p>
+    <p> x：{{x}} </x:>, y：{{y}} </p>
+    <p> x+y={{sum(x,y)}} </p>
+    <p> x*y={{mult(x,y)}} </p>
+    <p> 衬衫单价：{{shirtCost}} 元，数量：{{shirtNum}}, 金额：{{shirtPay}} 元 </p>
+    <p> 帽子单价：{{hatCost}} 元，数量：{{hatNum}}，金额：{{hatPay}} 元 </p>
+  </div>
 
-        </script> 
-    </body>
+  <script src="https://unpkg.com/vue"></script>
+
+  <script type="text/javascript">
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello!哈喽！',
+        price: '1800, 24, 34',
+        details: ['硬盘', '软盘', 'U盘'],
+        x: 50,
+        y: 60,
+        shirtCost: 30,
+        shirtNum: 40,
+        hatCost: 50,
+        hatNum: 30,
+      },
+      computed: {
+        total() {
+          return 1800 + 24 + 34;
+        },
+        shirtPay() {
+          //注意这里直接额你不引用数据需要this
+          return this.shirtCost * this.shirtNum;
+        },
+        hatPay() {
+          return this.hatCost * this.hatNum;
+        }
+      },
+      methods: {
+        sum(x, y) {
+          //注意传参数据，非内部引用数据，则不需要 this
+          return x + y;
+        },
+        mult(x, y) {
+          return x * y;
+        }
+      }
+    });
+  </script>
+</body>
+
 </html>
