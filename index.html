@@ -6,16 +6,18 @@
     </head>
     <body>
         <div id="App">
-        
+            {{message}}
         </div>
 
         <script src="https://unpkg.com/vue"></script>
 
         <script type="text/javascript">
-            const app = new Vue();
-            //准备绑定app
-            app.$mount('#app');
-            
+            const app = new Vue({
+                el: '#app',
+                data:{
+                    message:'Hello!哈喽！'
+                }
+            });            
 
         </script> 
 
