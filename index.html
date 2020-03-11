@@ -11,6 +11,9 @@
             <p>价格：{{price}}</p>
             <p>明细表：{{details}}</p>
             <p>合计：{{total}}</p>
+            <p> x：{{x}} </x:>, y：{{y}} </p>
+            <p> x+y={{sum(x,y)}} </p>
+            <p> x*y={{mult(x,y)}} </p>
         </div>
 
         <script src="https://unpkg.com/vue"></script>
@@ -20,12 +23,22 @@
                 el: '#app',
                 data:{
                     message:'Hello!哈喽！',
-                    price:18+34,
+                    price:'1800, 24, 34',
                     details: ['硬盘','软盘','U盘'],
+                    x:50,
+                    y:60,
                 },
                 computed:{
                     total(){
-                        return 18+34
+                        return 1800+24+34;
+                    }
+                },
+                methods:{
+                    sum(x,y){
+                        return x+y;
+                    },
+                    mult(x,y){
+                        return x*y;
                     }
                 }
             });            
