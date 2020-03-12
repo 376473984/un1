@@ -21,9 +21,11 @@
     <h2> 用vue模板语言：用v-html属性的元素替代双花括号占位符绑定数据</h2>
     <div v-html="message1"></div>
     <div v-html="price1"></div>
-    <div v-html="details1">
+    <div v-html="details1"></div>
     <div v-html="total1"></div>
-    
+    <h2> 声明式渲染：动态填充v-bind属性的元素</h2>
+    <img v-bind:src="imageSource">
+    <img v-bind:src="imgSrc" v-bind:alt="imgAlt" v-bind:title="imgTitle">
   </div>
 
   <script src="https://unpkg.com/vue"></script>
@@ -35,19 +37,26 @@
         message: 'Hello!哈喽！',
         message1: '<p>消息：Hello!哈喽！</p>',
         price: '1800, 24, 34',
-        price1:'<p>价格: 1800, 24, 34 </p>',
+        price1: '<p>价格: 1800, 24, 34 </p>',
         details: ['硬盘', '软盘', 'U盘'],
-        details1:'<p>明细表： [硬盘, 软盘, U盘] </p>',
+        details1: '<p>明细表： [硬盘, 软盘, U盘] </p>',
         x: 50,
         y: 60,
         shirtCost: 30,
         shirtNum: 40,
         hatCost: 50,
         hatNum: 30,
+        imageSource: 'http://via.placeholder.com/350x150',
+        imgSrc: 'https://cn.vuejs.org/images/logo.png',
+        imgAlt: 'vue-logo',
+        imgTitle: '这是你指定的title，主人'
       },
       computed: {
         total() {
           return 1800 + 24 + 34;
+        },
+        total1() {
+          return '<p>合计：' + (1800 + 24 + 34) + '</p>';
         },
         shirtPay() {
           //注意这里直接额你不引用数据需要this
