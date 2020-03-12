@@ -18,6 +18,12 @@
     <p> x*y={{mult(x,y)}} </p>
     <p> 衬衫单价：{{shirtCost}} 元，数量：{{shirtNum}}, 金额：{{shirtPay}} 元 </p>
     <p> 帽子单价：{{hatCost}} 元，数量：{{hatNum}}，金额：{{hatPay}} 元 </p>
+    <h2> 用vue模板语言：用v-html属性的元素替代双花括号占位符绑定数据</h2>
+    <span>消息：<div v-html="message"></div></span>
+    <p>价格：   <div v-html="price">价格：</div>  </p>
+    <p> 明细表：<div v-html="details">明细表：</div></p>
+    <p>合计：<div v-html="total">合计：</div> </p>
+    
   </div>
 
   <script src="https://unpkg.com/vue"></script>
