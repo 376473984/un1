@@ -7,6 +7,7 @@
 </head>
 
 <body>
+  <!--TODO: 编写视图区和代码区的内容-->
   <h2>这是个使用了Vue的测试页面</h2>
   <div id="app">
     <p>消息：{{message}}</p>
@@ -19,6 +20,7 @@
     <p> 衬衫单价：{{shirtCost}} 元，数量：{{shirtNum}}, 金额：{{shirtPay}} 元 </p>
     <p> 帽子单价：{{hatCost}} 元，数量：{{hatNum}}，金额：{{hatPay}} 元 </p>
   </div>
+
 
   <script src="https://unpkg.com/vue"></script>
 
@@ -41,7 +43,7 @@
           return 1800 + 24 + 34;
         },
         shirtPay() {
-          //注意这里直接额你不引用数据需要this
+          //TODO:注意这里直接额你不引用数据需要this
           return this.shirtCost * this.shirtNum;
         },
         hatPay() {
@@ -50,7 +52,7 @@
       },
       methods: {
         sum(x, y) {
-          //注意传参数据，非内部引用数据，则不需要 this
+          //TODO注意传参数据，非内部引用数据，则不需要 this
           return x + y;
         },
         mult(x, y) {
