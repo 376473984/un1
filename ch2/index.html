@@ -2,65 +2,76 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Vue.js App</title>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
 </head>
 
 <body>
-    <div id="app">
-        <h3>v-html绑定HTML格式数据</h3>
-        <div v-html="message"></div>
+  <div id="app">
+    <h3>v-html绑定HTML格式数据</h3>
+    <div v-html="message"></div>
 
-        <h3> v-bind: 绑定属性键值对中的值</h3>
-        <img v-bind:src="imgSrc">
+    <h3> v-bind: 绑定属性键值对中的值</h3>
+    <img v-bind:src="imgSrc">
 
-        <h3>v-if和v-else条件呈现</h3>
-        <div v-if="isVisible">v-if为真时呈现的数据</div>
-        <div v-else-if="otherVisible">v-else-if为真时呈现的数据</div>
-        <div v-else>v-else呈现的数据</div>
+    <h3>v-if和v-else条件呈现</h3>
+    <div v-if="isVisible">v-if为真时呈现的数据</div>
+    <div v-else-if="otherVisible">v-else-if为真时呈现的数据</div>
+    <div v-else>v-else呈现的数据</div>
 
-        <h3>v-for循环控制批量绑定数据</h3>
-        <h4>无序列表，原始格式</h4>
-        <ul>
-            <li v-for="person in people">
-                {{person}}
-            </li>
-        </ul>
-        <h4>无序列表，按模板</h4>
-        <ul>
-            <template v-for="person in people">
-                <li>
-                    {{person.name}}
-                </li>
-            </template>
-        </ul>
+    <h3>v-for循环控制批量绑定数据</h3>
+    <h4>无序列表，原始格式</h4>
+    <ul>
+      <li v-for="person in people">
+        {{person}}
+      </li>
+    </ul>
+    <h4>无序列表，按模板</h4>
+    <ul>
+      <template v-for="person in people">
+        <li>
+          {{person.name}}
+        </li>
+      </template>
+    </ul>
 
-        <h4>表格，按模板</h4>
-        <table>
-            <tr v-for="person in people">
-                <td>{{ person.name }}</td>
-                <td>{{ person.email }}</td>
-                <td>{{ person.balance }}</td>
-                <td>{{ person.registered }}</td>
-            </tr>
-        </table>
-</body>
-<h4>表格，按模板，根据逻辑类新型数据，两种选择性输出:视图区、方法，
-    使用 v-html 创建链接；方法返回数据绑定</h4>
-<table>
-    <tr v-for="person in people">
+    <h4>表格，按模板</h4>
+    <table>
+      <tr v-for="person in people">
         <td>{{ person.name }}</td>
+        <td>{{ person.email }}</td>
         <td>{{ person.balance }}</td>
         <td>{{ person.registered }}</td>
-        <td>{{ (person.isActive) ? '住校' : '走读' }}</td>
-        <td>{{ activeStatus(person) }}</td>
-        <td>
-            <a v-bind:href="'mailto:' + person.email">{{ person.email }}</a>
-        </td>
-        <td>学杂费：{{ fee(person.isActive) }}元 </td>
-            
+      </tr>
+    </table>
+</body>
+<h4>表格，按模板，根据逻辑类新型数据，两种选择性输出:视图区、方法，
+  使用 v-html 创建链接；方法返回数据绑定</h4>
+<table>
+  <tr>
+    <td>编号</td>
+    <td>姓名</td>
+    <td>班级</td>
+    <td>报名日期</td>
+    <td>必修课</td>
+    <td>选修课</td>
+    <td>电子邮件</td>
+    <td>收费及备注</td>
+  </tr>
+  <tr v-for="person in people">
+    <td>{{ person.index }}</td>
+    <td>{{ person.name }}</td>
+    <td>{{ person.guid }}</td>
+    <td>{{ person.registered }}</td>
+    <td>{{ (person.isActive) ? '注册' : '未注册' }}</td>
+    <td>{{ activeStatus(person) }}</td>
+    <td>
+      <a v-bind:href="'mailto:' + person.email">{{ person.email }}</a>
+    </td>
+    <td>实收学杂费：{{ fee(person.isActive) }}元 </td>
 
-    </tr>
+
+  </tr>
 </table>
 
 <h3>过滤数据</h3>
@@ -74,72 +85,72 @@
 </div>
 <script src="https://unpkg.com/vue"></script>
 <script type="text/javascript">
-    const app = new Vue({
-        el: '#app',
-        data: {
-            message: '<h1>Hello!大家好！</h1>',
-            imgSrc: 'http://via.placeholder.com/350x150',
-            isVisible: false,
-            otherVisible: false,
-            people: [{
-                    index: 0,
-                    guid: 'a-1',
-                    isActive: true,
-                    name: '张三',
-                    email: 'a@a.com',
-                    registered: '2018-02-30',
-                }, {
-                    index: 1,
-                    guid: 'a-1',
-                    isActive: false,
-                    name: '张三',
-                    email: 'a@a.com',
-                    registered: '2018-02-30',
-                }, {
-                    index: 2,
-                    guid: 'a-1',
-                    isActive: true,
-                    name: '周日三',
-                    email: 'a@a.com',
-                    registered: '2018-02-30',
-                }, {
-                    index: 3,
-                    guid: 'a-1',
-                    isActive: false,
-                    name: '刘安三',
-                    email: 'a@a.com',
-                    registered: '2018-02-30',
-                }, {
-                    index: 4,
-                    guid: 'a-1',
-                    isActive: true,
-                    name: '李四三',
-                    email: 'a@a.com',
-                    registered: '2018-02-30',
-                }, {
-                    index: 5,
-                    guid: 'a-1',
-                    isActive: true,
-                    name: '王三',
-                    email: 'a@a.com',
-                    registered: '2018-02-30',
-                }
-
-            ]
-        },
-        methods: {
-            activeStatus(person) {
-                return (person.isActive) ? '住校' : '走读';
-            },
-            fee(is) {
-                if (is) {
-                    return 4000;
-                } else {
-                    return 3400;
-                }
-            },
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '<h1>Hello!大家好！</h1>',
+      imgSrc: 'http://via.placeholder.com/350x150',
+      isVisible: false,
+      otherVisible: false,
+      people: [{
+          index: 0,
+          guid: 'a-1',
+          isActive: true,
+          name: '李青林',
+          email: 'lql@a.com',
+          registered: '2018-01-10',
+        }, {
+          index: 1,
+          guid: 'a-1',
+          isActive: false,
+          name: '徐文欣',
+          email: 'xwx@a.com',
+          registered: '2018-01-17',
+        }, {
+          index: 2,
+          guid: 'a-1',
+          isActive: true,
+          name: '李明元',
+          email: 'lmy@a.com',
+          registered: '2018-01-20',
+        }, {
+          index: 3,
+          guid: 'a-1',
+          isActive: false,
+          name: '王俊明',
+          email: 'wjm@a.com',
+          registered: '2018-02-01',
+        }, {
+          index: 4,
+          guid: 'a-1',
+          isActive: true,
+          name: '張玉芳',
+          email: 'zyf@a.com',
+          registered: '2018-02-03',
+        }, {
+          index: 5,
+          guid: 'a-1',
+          isActive: true,
+          name: '王得心',
+          email: 'wdx@a.com',
+          registered: '2018-02-23',
         }
-    });
+
+      ]
+    },
+    methods: {
+      activeStatus(person) {
+        return (person.isActive) ? '注册' : '未注册';
+      },
+      fee(is) {
+        if (is) {
+          return 4000;
+        } else {
+          return 6400 + '元，补注册费2400元';
+        }
+      },
+    }
+  });
 </script>
 </body>
 
