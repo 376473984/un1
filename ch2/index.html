@@ -44,6 +44,17 @@
                 <td>{{ person.registered }}</td>
                 </tr>
             </table>
+        <h4>表格，按模板，根据逻辑类新型数据，两种选择性输出:视图区、方法</h4>
+            <table>
+                <tr v-for="person in people">
+                <td>{{ person.name }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.balance }}</td>
+                <td>{{ person.registered }}</td>
+                <td>{{ (person.isActive) ? '常驻' : '非常住' }}</td>
+                <td>{{ activeStatus(person) }}</td>
+                </tr>
+            </table>
 
         <h3>过滤数据</h3>
 
@@ -73,7 +84,7 @@
                     }, {
                         index: 1,
                         guid: 'a-1',
-                        isActive: true,
+                        isActive: false,
                         name: '张三',
                         email: 'a@a.com',
                         registered: '2018-02-30',
@@ -87,7 +98,7 @@
                     }, {
                         index: 3,
                         guid: 'a-1',
-                        isActive: true,
+                        isActive: false,
                         name: '刘安三',
                         email: 'a@a.com',
                         registered: '2018-02-30',
@@ -108,7 +119,13 @@
                     }
 
                 ]
+            },
+            methods:{
+                activeStatus(person) {
+                    return (person.isActive) ? '常驻' : '非常住';
+                }
             }
+
         });
     </script>
 </body>
