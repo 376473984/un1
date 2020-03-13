@@ -44,15 +44,21 @@
                 <td>{{ person.registered }}</td>
                 </tr>
             </table>
-        <h4>表格，按模板，根据逻辑类新型数据，两种选择性输出:视图区、方法</h4>
+</body>
+        <h4>表格，按模板，根据逻辑类新型数据，两种选择性输出:视图区、方法，
+            使用 v-html 创建链接</h4>
             <table>
                 <tr v-for="person in people">
                 <td>{{ person.name }}</td>
-                <td>{{ person.email }}</td>
                 <td>{{ person.balance }}</td>
                 <td>{{ person.registered }}</td>
-                <td>{{ (person.isActive) ? '常驻' : '非常住' }}</td>
+                <td>{{ (person.isActive) ? '住校' : '走读' }}</td>
                 <td>{{ activeStatus(person) }}</td>
+                <td>
+                     <a v-bind:href="'mailto:' + person.email">{{ person.email }}</a>
+                </td>
+               
+
                 </tr>
             </table>
 
@@ -122,7 +128,7 @@
             },
             methods:{
                 activeStatus(person) {
-                    return (person.isActive) ? '常驻' : '非常住';
+                    return (person.isActive) ? '住校' : '走读';
                 }
             }
 
