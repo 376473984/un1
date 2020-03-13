@@ -9,13 +9,15 @@
 <body>
     <div id="app">
         <div v-html="message"></div>
+        <img v-bind:src="imgSrc">
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script type="text/javascript">
         const app=new Vue({
             el:'#app',
             data:{
-                message:'<h1>Hello!大家好！</h1>'
+                message:'<h1>Hello!大家好！</h1>',
+                imgSrc:'http://via.placeholder.com/350x150',
             }
         });
 
