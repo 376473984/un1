@@ -8,26 +8,27 @@
 
 <body>
     <div id="app">
-        <p>v-html绑定HTML格式数据</p>
+        <h3>v-html绑定HTML格式数据</h3>
         <div v-html="message"></div>
 
-        <p> v-bind: 绑定属性键值对中的值</p>
+        <h3> v-bind: 绑定属性键值对中的值</h3>
         <img v-bind:src="imgSrc">
 
-        <p>v-if和v-else条件呈现</p>
-        <div v-if="isVisible">条件为真时呈现的数据</div>
-        <div v-else>否则呈现的数据</div>
+        <h3>v-if和v-else条件呈现</h3>
+        <div v-if="isVisible">v-if为真时呈现的数据</div>
+        <div v-else-if="otherVisible">v-else-if为真时呈现的数据</div>
+        <div v-else>v-else呈现的数据</div>
 
-        <p>v-for循环控制批量绑定数据</p>
-
-
-        <p>过滤数据</p>
+        <h3>v-for循环控制批量绑定数据</h3>
 
 
-        <p>显示和隐藏vue内容</p>
+        <h3>过滤数据</h3>
 
 
-        <p>过滤和自定义类</p>
+        <h3>显示和隐藏vue内容</h3>
+
+
+        <h3>过滤和自定义类</h3>
 
     </div>
     <script src="https://unpkg.com/vue"></script>
@@ -38,6 +39,7 @@
                 message:'<h1>Hello!大家好！</h1>',
                 imgSrc:'http://via.placeholder.com/350x150',
                 isVisible:false,
+                otherVisible:false,
             }
         });
 
