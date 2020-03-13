@@ -31,109 +31,116 @@
             <template v-for="person in people">
                 <li>
                     {{person.name}}
-                </li>  
+                </li>
             </template>
         </ul>
 
         <h4>表格，按模板</h4>
-            <table>
-                <tr v-for="person in people">
+        <table>
+            <tr v-for="person in people">
                 <td>{{ person.name }}</td>
                 <td>{{ person.email }}</td>
                 <td>{{ person.balance }}</td>
                 <td>{{ person.registered }}</td>
-                </tr>
-            </table>
+            </tr>
+        </table>
 </body>
-        <h4>表格，按模板，根据逻辑类新型数据，两种选择性输出:视图区、方法，
-            使用 v-html 创建链接</h4>
-            <table>
-                <tr v-for="person in people">
-                <td>{{ person.name }}</td>
-                <td>{{ person.balance }}</td>
-                <td>{{ person.registered }}</td>
-                <td>{{ (person.isActive) ? '住校' : '走读' }}</td>
-                <td>{{ activeStatus(person) }}</td>
-                <td>
-                     <a v-bind:href="'mailto:' + person.email">{{ person.email }}</a>
-                </td>
-               
+<h4>表格，按模板，根据逻辑类新型数据，两种选择性输出:视图区、方法，
+    使用 v-html 创建链接；方法返回数据绑定</h4>
+<table>
+    <tr v-for="person in people">
+        <td>{{ person.name }}</td>
+        <td>{{ person.balance }}</td>
+        <td>{{ person.registered }}</td>
+        <td>{{ (person.isActive) ? '住校' : '走读' }}</td>
+        <td>{{ activeStatus(person) }}</td>
+        <td>
+            <a v-bind:href="'mailto:' + person.email">{{ person.email }}</a>
+        </td>
+        <td>学杂费：{{ fee(person.isActive) }}元 </td>
+            
 
-                </tr>
-            </table>
+    </tr>
+</table>
 
-        <h3>过滤数据</h3>
-
-
-        <h3>显示和隐藏vue内容</h3>
+<h3>过滤数据</h3>
 
 
-        <h3>过滤和自定义类</h3>
+<h3>显示和隐藏vue内容</h3>
 
-    </div>
-    <script src="https://unpkg.com/vue"></script>
-    <script type="text/javascript">
-        const app = new Vue({
-            el: '#app',
-            data: {
-                message: '<h1>Hello!大家好！</h1>',
-                imgSrc: 'http://via.placeholder.com/350x150',
-                isVisible: false,
-                otherVisible: false,
-                people: [{
-                        index: 0,
-                        guid: 'a-1',
-                        isActive: true,
-                        name: '张三',
-                        email: 'a@a.com',
-                        registered: '2018-02-30',
-                    }, {
-                        index: 1,
-                        guid: 'a-1',
-                        isActive: false,
-                        name: '张三',
-                        email: 'a@a.com',
-                        registered: '2018-02-30',
-                    }, {
-                        index: 2,
-                        guid: 'a-1',
-                        isActive: true,
-                        name: '周日三',
-                        email: 'a@a.com',
-                        registered: '2018-02-30',
-                    }, {
-                        index: 3,
-                        guid: 'a-1',
-                        isActive: false,
-                        name: '刘安三',
-                        email: 'a@a.com',
-                        registered: '2018-02-30',
-                    }, {
-                        index: 4,
-                        guid: 'a-1',
-                        isActive: true,
-                        name: '李四三',
-                        email: 'a@a.com',
-                        registered: '2018-02-30',
-                    }, {
-                        index: 5,
-                        guid: 'a-1',
-                        isActive: true,
-                        name: '王三',
-                        email: 'a@a.com',
-                        registered: '2018-02-30',
-                    }
 
-                ]
-            },
-            methods:{
-                activeStatus(person) {
-                    return (person.isActive) ? '住校' : '走读';
+<h3>过滤和自定义类</h3>
+
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: '<h1>Hello!大家好！</h1>',
+            imgSrc: 'http://via.placeholder.com/350x150',
+            isVisible: false,
+            otherVisible: false,
+            people: [{
+                    index: 0,
+                    guid: 'a-1',
+                    isActive: true,
+                    name: '张三',
+                    email: 'a@a.com',
+                    registered: '2018-02-30',
+                }, {
+                    index: 1,
+                    guid: 'a-1',
+                    isActive: false,
+                    name: '张三',
+                    email: 'a@a.com',
+                    registered: '2018-02-30',
+                }, {
+                    index: 2,
+                    guid: 'a-1',
+                    isActive: true,
+                    name: '周日三',
+                    email: 'a@a.com',
+                    registered: '2018-02-30',
+                }, {
+                    index: 3,
+                    guid: 'a-1',
+                    isActive: false,
+                    name: '刘安三',
+                    email: 'a@a.com',
+                    registered: '2018-02-30',
+                }, {
+                    index: 4,
+                    guid: 'a-1',
+                    isActive: true,
+                    name: '李四三',
+                    email: 'a@a.com',
+                    registered: '2018-02-30',
+                }, {
+                    index: 5,
+                    guid: 'a-1',
+                    isActive: true,
+                    name: '王三',
+                    email: 'a@a.com',
+                    registered: '2018-02-30',
                 }
-            }
 
-        });
-    </script>
+            ]
+        },
+        methods: {
+            activeStatus(person) {
+                return (person.isActive) ? '住校' : '走读';
+            },
+            fee(is) {
+                if (is) {
+                    return 4000;
+                } else {
+                    return 3400;
+                }
+            },
+        }
+    });
+</script>
 </body>
 
 </html>
